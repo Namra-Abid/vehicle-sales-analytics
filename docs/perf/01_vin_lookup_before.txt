@@ -1,0 +1,45 @@
+]633;E;for i in 1 2 3;53efc886-0dd8-4897-b9de-81aebe6f5cb9]633;C----- run 1 -----
+SET
+SET
+                                                       QUERY PLAN                                                        
+-------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..10892.51 rows=1 width=11) (actual time=0.317..25.663 rows=1 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   ->  Parallel Seq Scan on fact_sales  (cost=0.00..9892.41 rows=1 width=11) (actual time=13.406..21.209 rows=0 loops=3)
+         Filter: (vin = '5xyktca69fg566472'::text)
+         Rows Removed by Filter: 186266
+ Planning Time: 0.377 ms
+ Execution Time: 25.732 ms
+(8 rows)
+
+----- run 2 -----
+SET
+SET
+                                                       QUERY PLAN                                                        
+-------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..10892.51 rows=1 width=11) (actual time=0.335..27.703 rows=1 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   ->  Parallel Seq Scan on fact_sales  (cost=0.00..9892.41 rows=1 width=11) (actual time=14.560..22.888 rows=0 loops=3)
+         Filter: (vin = '5xyktca69fg566472'::text)
+         Rows Removed by Filter: 186266
+ Planning Time: 0.378 ms
+ Execution Time: 27.748 ms
+(8 rows)
+
+----- run 3 -----
+SET
+SET
+                                                       QUERY PLAN                                                        
+-------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..10892.51 rows=1 width=11) (actual time=0.309..25.774 rows=1 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   ->  Parallel Seq Scan on fact_sales  (cost=0.00..9892.41 rows=1 width=11) (actual time=13.528..21.343 rows=0 loops=3)
+         Filter: (vin = '5xyktca69fg566472'::text)
+         Rows Removed by Filter: 186266
+ Planning Time: 0.409 ms
+ Execution Time: 25.819 ms
+(8 rows)
+

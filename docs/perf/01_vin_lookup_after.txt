@@ -1,0 +1,27 @@
+]633;E;for i in 1 2 3;53efc886-0dd8-4897-b9de-81aebe6f5cb9]633;C----- run 1 -----
+                                                           QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using idx_fact_sales_vin on fact_sales  (cost=0.42..8.44 rows=1 width=11) (actual time=0.016..0.017 rows=1 loops=1)
+   Index Cond: (vin = '5xyktca69fg566472'::text)
+ Planning Time: 0.377 ms
+ Execution Time: 0.059 ms
+(4 rows)
+
+----- run 2 -----
+                                                           QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using idx_fact_sales_vin on fact_sales  (cost=0.42..8.44 rows=1 width=11) (actual time=0.017..0.018 rows=1 loops=1)
+   Index Cond: (vin = '5xyktca69fg566472'::text)
+ Planning Time: 0.443 ms
+ Execution Time: 0.059 ms
+(4 rows)
+
+----- run 3 -----
+                                                           QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using idx_fact_sales_vin on fact_sales  (cost=0.42..8.44 rows=1 width=11) (actual time=0.016..0.017 rows=1 loops=1)
+   Index Cond: (vin = '5xyktca69fg566472'::text)
+ Planning Time: 0.375 ms
+ Execution Time: 0.059 ms
+(4 rows)
+
