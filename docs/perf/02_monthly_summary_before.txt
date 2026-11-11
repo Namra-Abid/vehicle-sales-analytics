@@ -1,0 +1,72 @@
+]633;E;for i in 1 2 3;53efc886-0dd8-4897-b9de-81aebe6f5cb9]633;C----- run 1 -----
+                                                                      QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize HashAggregate  (cost=19355.20..19622.36 rows=9715 width=83) (actual time=192.756..194.326 rows=436 loops=1)
+   Group Key: ((date_trunc('month'::text, (f.sale_date)::timestamp with time zone))::date), v.make
+   Batches: 1  Memory Usage: 529kB
+   ->  Gather  (cost=16999.31..19112.32 rows=19430 width=83) (actual time=191.792..193.186 rows=1161 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         ->  Partial HashAggregate  (cost=15999.31..16169.32 rows=9715 width=83) (actual time=188.690..188.813 rows=387 loops=3)
+               Group Key: (date_trunc('month'::text, (f.sale_date)::timestamp with time zone))::date, v.make
+               Batches: 1  Memory Usage: 529kB
+               Worker 0:  Batches: 1  Memory Usage: 529kB
+               Worker 1:  Batches: 1  Memory Usage: 529kB
+               ->  Hash Join  (cost=838.95..12506.81 rows=232833 width=19) (actual time=7.993..135.281 rows=186266 loops=3)
+                     Hash Cond: (f.vehicle_id = v.vehicle_id)
+                     ->  Parallel Seq Scan on fact_sales f  (cost=0.00..9310.33 rows=232833 width=16) (actual time=0.034..17.219 rows=186266 loops=3)
+                     ->  Hash  (cost=511.20..511.20 rows=26220 width=11) (actual time=7.776..7.777 rows=26220 loops=3)
+                           Buckets: 32768  Batches: 1  Memory Usage: 1403kB
+                           ->  Seq Scan on dim_vehicle v  (cost=0.00..511.20 rows=26220 width=11) (actual time=0.010..3.032 rows=26220 loops=3)
+ Planning Time: 0.725 ms
+ Execution Time: 194.964 ms
+(19 rows)
+
+----- run 2 -----
+                                                                      QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize HashAggregate  (cost=19355.20..19622.36 rows=9715 width=83) (actual time=189.990..192.407 rows=436 loops=1)
+   Group Key: ((date_trunc('month'::text, (f.sale_date)::timestamp with time zone))::date), v.make
+   Batches: 1  Memory Usage: 529kB
+   ->  Gather  (cost=16999.31..19112.32 rows=19430 width=83) (actual time=189.246..191.683 rows=1166 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         ->  Partial HashAggregate  (cost=15999.31..16169.32 rows=9715 width=83) (actual time=186.055..186.190 rows=389 loops=3)
+               Group Key: (date_trunc('month'::text, (f.sale_date)::timestamp with time zone))::date, v.make
+               Batches: 1  Memory Usage: 529kB
+               Worker 0:  Batches: 1  Memory Usage: 529kB
+               Worker 1:  Batches: 1  Memory Usage: 529kB
+               ->  Hash Join  (cost=838.95..12506.81 rows=232833 width=19) (actual time=8.157..133.290 rows=186266 loops=3)
+                     Hash Cond: (f.vehicle_id = v.vehicle_id)
+                     ->  Parallel Seq Scan on fact_sales f  (cost=0.00..9310.33 rows=232833 width=16) (actual time=0.030..17.225 rows=186266 loops=3)
+                     ->  Hash  (cost=511.20..511.20 rows=26220 width=11) (actual time=7.897..7.897 rows=26220 loops=3)
+                           Buckets: 32768  Batches: 1  Memory Usage: 1403kB
+                           ->  Seq Scan on dim_vehicle v  (cost=0.00..511.20 rows=26220 width=11) (actual time=0.013..3.142 rows=26220 loops=3)
+ Planning Time: 0.687 ms
+ Execution Time: 193.061 ms
+(19 rows)
+
+----- run 3 -----
+                                                                      QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize HashAggregate  (cost=19355.20..19622.36 rows=9715 width=83) (actual time=199.309..200.949 rows=436 loops=1)
+   Group Key: ((date_trunc('month'::text, (f.sale_date)::timestamp with time zone))::date), v.make
+   Batches: 1  Memory Usage: 529kB
+   ->  Gather  (cost=16999.31..19112.32 rows=19430 width=83) (actual time=198.331..199.789 rows=1167 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         ->  Partial HashAggregate  (cost=15999.31..16169.32 rows=9715 width=83) (actual time=195.332..195.459 rows=389 loops=3)
+               Group Key: (date_trunc('month'::text, (f.sale_date)::timestamp with time zone))::date, v.make
+               Batches: 1  Memory Usage: 529kB
+               Worker 0:  Batches: 1  Memory Usage: 529kB
+               Worker 1:  Batches: 1  Memory Usage: 529kB
+               ->  Hash Join  (cost=838.95..12506.81 rows=232833 width=19) (actual time=7.987..140.004 rows=186266 loops=3)
+                     Hash Cond: (f.vehicle_id = v.vehicle_id)
+                     ->  Parallel Seq Scan on fact_sales f  (cost=0.00..9310.33 rows=232833 width=16) (actual time=0.026..18.048 rows=186266 loops=3)
+                     ->  Hash  (cost=511.20..511.20 rows=26220 width=11) (actual time=7.769..7.770 rows=26220 loops=3)
+                           Buckets: 32768  Batches: 1  Memory Usage: 1403kB
+                           ->  Seq Scan on dim_vehicle v  (cost=0.00..511.20 rows=26220 width=11) (actual time=0.011..3.043 rows=26220 loops=3)
+ Planning Time: 0.720 ms
+ Execution Time: 201.643 ms
+(19 rows)
+

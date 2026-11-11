@@ -1,0 +1,24 @@
+]633;E;for i in 1 2 3;53efc886-0dd8-4897-b9de-81aebe6f5cb9]633;C----- run 1 -----
+                                                     QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Seq Scan on mv_monthly_make_sales  (cost=0.00..8.36 rows=436 width=30) (actual time=0.015..0.045 rows=436 loops=1)
+ Planning Time: 0.255 ms
+ Execution Time: 0.092 ms
+(3 rows)
+
+----- run 2 -----
+                                                     QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Seq Scan on mv_monthly_make_sales  (cost=0.00..8.36 rows=436 width=30) (actual time=0.016..0.048 rows=436 loops=1)
+ Planning Time: 0.184 ms
+ Execution Time: 0.118 ms
+(3 rows)
+
+----- run 3 -----
+                                                     QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Seq Scan on mv_monthly_make_sales  (cost=0.00..8.36 rows=436 width=30) (actual time=0.014..0.046 rows=436 loops=1)
+ Planning Time: 0.189 ms
+ Execution Time: 0.094 ms
+(3 rows)
+
