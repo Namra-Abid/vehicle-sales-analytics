@@ -41,7 +41,7 @@ so both runs use the same data and the same query.
 
 ## Superset dashboard
 
-![Vehicle Sales Overview dashboard](docs/images/dashboard.png)
+![Vehicle Sales Overview dashboard](docs/images/dashboard.jpg)
 
 Dashboard, charts and datasets exported from Superset: [`superset/exports/`](superset/exports/)
 (import via Superset → Dashboards → Import).
