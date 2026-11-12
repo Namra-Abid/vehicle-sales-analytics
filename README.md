@@ -38,3 +38,10 @@ so both runs use the same data and the same query.
 - [Before: full aggregation](docs/perf/02_monthly_summary_before.txt)
 - [After: read from materialized view](docs/perf/02_monthly_summary_after.txt)
 - Definition: [`sql/05_materialized_views.sql`](sql/05_materialized_views.sql)
+
+## Superset dashboard
+
+![Vehicle Sales Overview dashboard](docs/images/dashboard.png)
+
+Dashboard, charts and datasets exported from Superset: [`superset/exports/`](superset/exports/)
+(import via Superset → Dashboards → Import).
